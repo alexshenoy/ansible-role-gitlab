@@ -9,6 +9,16 @@ gitlab_rails['gitlab_email_enabled'] = {{ gitlab_email_enabled }}
 gitlab_rails['gitlab_email_from'] = "{{ gitlab_email_from }}"
 gitlab_rails['gitlab_email_display_name'] = "{{ gitlab_email_display_name }}"
 gitlab_rails['gitlab_email_reply_to'] = "{{ gitlab_email_reply_to }}"
+{% if gitlab_email_smtp == "true" %}
+gitlab_rails['smtp_address'] = "{{gitlab_smtp_address}}"
+gitlab_rails['smtp_port'] = {{gitlab_smtp_port}}
+gitlab_rails['smtp_user_name'] = "{{gitlab_smtp_user_name}}"
+gitlab_rails['smtp_password'] = "{{gitlab_smtp_password}}"
+gitlab_rails['smtp_domain'] = "{{gitlab_smtp_domain}}"
+gitlab_rails['smtp_authentication'] = "{{gitlab_smtp_authentication}}"
+gitlab_rails['smtp_enable_starttls_auto'] = true
+gitlab_rails['smtp_tls'] = false
+{% endif %}
 {% endif %}
 
 # Whether to redirect http to https.
